@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, input, Output } from '@angular/core';
+import { Character } from '../../interfaces/character.interface';
 
 @Component({
   selector: 'dbz-list',
@@ -6,5 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './list.component.css'
 })
 export class ListComponent {
+
+  @Input()
+  public characterList: Character[] = [{
+    name: 'Trunk',
+    power: 10
+  }]
+
+  @Output()
+  public onDelete: EventEmitter<string> = new EventEmitter
+
+  // onDeleteId = Index value : number
+
+  onDeleteChacarter(id?: string):void {
+
+    if ( !id ) return;
+
+    this,this.onDelete.emit( id )
+  }
 
 }
